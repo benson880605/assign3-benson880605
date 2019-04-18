@@ -160,6 +160,28 @@ void draw() {
       image(stone1 , x , y );
     }
       
+      // floor2
+      
+    for(int i = 0 ; i<8 ; i++){
+      int x = width - 560 - i*80;
+      int y = 880 + i*80 - groundHogY ; 
+      image(stone1 , x , y );
+      image(stone1 , x + 320 , y );
+      image(stone1 , x + 640 , y );
+      image(stone1 , x + 960 , y );
+    }
+    
+    for(int i = 0 ; i<8 ; i++){
+      int x =  160 + i*80;
+      int y = 880 + i*80 - groundHogY ; 
+      image(stone1 , x , y );
+      image(stone1 , x + 320 , y );
+      image(stone1 , x + 640 , y );
+      image(stone1 , x - 320 , y );
+      image(stone1 , x - 640 , y );
+    }
+      
+      
       // floor3
     for(int i = 0 ; i < 8 ; i++){
       int x = width - 80 - i*80;
