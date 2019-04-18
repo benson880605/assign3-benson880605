@@ -61,7 +61,7 @@ void setup() {
    stone1 = loadImage("img/stone1.png");
    stone2 = loadImage("img/stone2.png");
    
-   playerHealth = 3 ;
+   playerHealth = 2 ;
    groundHogX = width/2;
    groundHogY = 80;
    idle = true;
