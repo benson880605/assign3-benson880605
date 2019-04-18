@@ -104,6 +104,11 @@ void draw() {
 			image(startNormal, START_BUTTON_X, START_BUTTON_Y);
 
 		}
+		
+		down = false;
+   		left = false;
+   		right = false;
+    
 		break;
 
 		case GAME_RUN: // In-Game
