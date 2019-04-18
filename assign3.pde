@@ -61,7 +61,7 @@ void setup() {
    stone1 = loadImage("img/stone1.png");
    stone2 = loadImage("img/stone2.png");
    
-   playerHealth = 2 ;
+   playerHealth = 3 ;
    groundHogX = width/2;
    groundHogY = 80;
    idle = true;
@@ -104,11 +104,11 @@ void draw() {
 			image(startNormal, START_BUTTON_X, START_BUTTON_Y);
 
 		}
-		
-		down = false;
-   		left = false;
-   		right = false;
-    
+
+    down = false;
+    left = false;
+    right = false;
+
 		break;
 
 		case GAME_RUN: // In-Game
@@ -164,7 +164,7 @@ void draw() {
       int y = i*80 + 240 - groundHogY ;
       image(stone1 , x , y );
     }
-      
+    
       // floor2
       
     for(int i = 0 ; i<8 ; i++){
@@ -186,7 +186,6 @@ void draw() {
       image(stone1 , x - 640 , y );
     }
       
-      
       // floor3
     for(int i = 0 ; i < 8 ; i++){
       int x = width - 80 - i*80;
@@ -204,7 +203,6 @@ void draw() {
       image(stone1 , x+480 , y );
       image(stone1 , x+560 , y );
 
-      
       image(stone2 , x2 , y2 );
       image(stone2 , x2-240 , y2 );
       image(stone2 , x2-480 , y2 );
@@ -270,8 +268,8 @@ void draw() {
     if(down2){
       image(groundHogDown,groundHogX,groundHogY2);
       idle2 = false;
-      left = false;
-      right = false;
+      left2 = false;
+      right2 = false;
       groundHogY2 += groundHogSpeed;
       if(groundHogY2 == 160||groundHogY2 == 240||groundHogY2 == 320||groundHogY2 == 400){
         down2 = false;
@@ -284,8 +282,8 @@ void draw() {
     if(left2){
       image(groundHogLeft,groundHogX,groundHogY2);
       idle2 = false;
-      right = false;
-      down = false;
+      right2 = false;
+      down2 = false;
       groundHogX -= groundHogSpeed;
       if(groundHogX == 0||groundHogX == 80||groundHogX == 160||groundHogX == 240||groundHogX == 320||groundHogX == 400||groundHogX == 480||groundHogX == 560){
         left2 = false;
@@ -295,8 +293,8 @@ void draw() {
     if(right2){
       image(groundHogRight,groundHogX,groundHogY2);
       idle2 = false;
-      left = false;
-      down = false;
+      left2 = false;
+      down2 = false;
       groundHogX += groundHogSpeed;
       if(groundHogX == 0||groundHogX == 80||groundHogX == 160||groundHogX == 240||groundHogX == 320||groundHogX == 400||groundHogX == 480||groundHogX == 560){
         right2 = false;
@@ -364,26 +362,26 @@ void keyPressed(){
       
       case DOWN:
       down = true;
-      if(left){down = false;down2 = false;}  // Prevent bug
-      if(right){down = false;down2 = false;}  // Prevent bug
       if(groundHogY >= 1680 && groundHogY < 2000 ){down2 = true;down = false ;idle = false;}
       if(groundHogY2 >= 400){down2 = false;}
+      if(left || left2 ){down = false;down2 = false;}  // Prevent bug
+      if(right || right2 ){down = false;down2 = false;}  // Prevent bug
       break;
       
       case LEFT:
       left = true;
-      if(down){left = false;}  // Prevent bug
-      if(right){left = false;}  // Prevent bug
       if(groundHogY >= 1680 && groundHogY < 2000 ){left2 = true;left = false ;idle = false;}
       if(groundHogX <= 0){left = false;left2 = false;}  // Prevent bug
+      if(down || down2 ){left = false;left2 = false;}  // Prevent bug
+      if(right || right2 ){left = false;left2 = false;}  // Prevent bug
       break;
       
       case RIGHT:
       right = true;
-      if(down){right = false;}  // Prevent bug
-      if(left){right = false;}  // Prevent bug
       if(groundHogY >= 1680 && groundHogY < 2000 ){right2 = true;right = false ;idle = false;}
       if(groundHogX >= 560){right = false;right2 = false;}
+      if(down || down2){right = false;right2 = false;}  // Prevent bug
+      if(left || left2){right = false;right2 = false;}  // Prevent bug
       break;
         
     }
